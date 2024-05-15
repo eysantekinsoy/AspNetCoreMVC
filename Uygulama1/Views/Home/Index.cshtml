@@ -1,0 +1,31 @@
+﻿@{
+
+    ViewBag.Title = "Anasayfa";
+}
+
+<div class="row">
+    <div class="col-md-4">
+        <img src="@ViewBag.resim" />
+    </div>
+    <div class="col-md-8">
+        <h1>@ViewBag.baslik</h1>
+        <p>@ViewBag.ıcerik</p>
+    </div>
+</div>
+@* @{
+    ViewData["Title"] = "Anasayfa büyük";
+}
+
+<div class="row">
+    <div class="col-md-4">
+        <img src="@ViewData["Resim"]" />
+    </div>
+    <div class="col-md-8">
+        <h1>@ViewData["Baslik"]</h1>
+        <p>@ViewData["Icerik"]</p>
+    </div>
+</div>
+
+@{
+    ViewBag.Title= "Anasayfa küçük";
+} *@
