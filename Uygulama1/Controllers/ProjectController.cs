@@ -9,9 +9,9 @@ namespace Example04.WebApplication.Controllers
         {
             ViewBag.Menuler = GetMenus();
             ViewBag.AltMenuler = GetSubMenus();
+
             return View();
         }
-
         private List<Menu> GetMenus()
         {
             List<Menu> menus = new List<Menu>();
@@ -19,7 +19,7 @@ namespace Example04.WebApplication.Controllers
             Menu menu1 = new Menu() { Id = 1, DisplayName = "Anasayfa", Controller = "Home", Action = "Index" };
             Menu menu2 = new Menu() { Id = 2, DisplayName = "Hakkımızda", Controller = "About", Action = "Index" };
             Menu menu3 = new Menu() { Id = 3, DisplayName = "Projeler", Controller = "Project", Action = "Index" };
-            Menu menu4 = new Menu() { Id = 4, DisplayName = "İletisim", Controller = "Contact", Action = "Index" };
+            Menu menu4 = new Menu() { Id = 4, DisplayName = "İletişim", Controller = "Contact", Action = "Index" };
 
             menus.Add(menu1);
             menus.Add(menu2);
@@ -33,9 +33,9 @@ namespace Example04.WebApplication.Controllers
         {
             List<Menu> menus = new List<Menu>();
 
-            Menu menu1 = new Menu() { Id = 1, DisplayName = "Yurt içi", Controller = "Project", Action = "YurtIci" };
-            Menu menu2 = new Menu() { Id = 2, DisplayName = "Yurt dışı", Controller = "Project", Action = "YurtDisi" };
-            Menu menu3 = new Menu() { Id = 3, DisplayName = "Ödüllü Projeler", Controller = "Project", Action = "OdüllüProjeler" };
+            Menu menu1 = new Menu() { Id = 1, DisplayName = "Yurt İçi", Controller = "Project", Action = "YurtIci" };
+            Menu menu2 = new Menu() { Id = 2, DisplayName = "Yurt Dışı", Controller = "Project", Action = "YurtDisi" };
+            Menu menu3 = new Menu() { Id = 3, DisplayName = "Ödülü Projeler", Controller = "Project", Action = "OdulluProjeler" };
 
             menus.Add(menu1);
             menus.Add(menu2);
@@ -43,5 +43,6 @@ namespace Example04.WebApplication.Controllers
 
             return menus;
         }
+
     }
 }
