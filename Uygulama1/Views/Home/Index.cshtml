@@ -5,11 +5,19 @@
 
 <div class="row">
     <div class="col-md-4">
+         <cache enabled=true expires-sliding="@TimeSpan.FromSeconds(10)">
         <img src="@ViewBag.resim" />
+        </cache>
     </div>
     <div class="col-md-8">
-        <h1>@ViewBag.baslik</h1>
-        <p>@ViewBag.ıcerik</p>
+        <h1>@ViewBag.Baslik</h1>
+@*         <cache enabled=true expires-on="@new DateTime(2024,4,18,14,36,00)"> Belirtilen süreye kadar cacheleme*@
+@*         <cache enabled=true expires-after="@TimeSpan.FromSeconds(30)"> 30 Saniye sonra cacheleme *@
+        <cache enabled=true expires-sliding="@TimeSpan.FromSeconds(10)"> @* Zaman gelmeden yeniledikce verilen süre kadar yeniler *@
+        <p>@ViewBag.Icerik</p>
+        <p>@DateTime.Now</p>
+
+        </cache>
     </div>
 </div>
 @* @{
