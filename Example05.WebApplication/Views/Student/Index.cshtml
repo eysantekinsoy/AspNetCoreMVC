@@ -1,5 +1,86 @@
-﻿@model Student
+﻿@{
+    //ViewBag.Title = "Burada da öğrenciler";
+    string title = ViewData["baslik"].ToString();
+}
+<h1 class="m-3">@title.ToUpper()</h1>
+<div class="row mt-5">
+    <div class="col-3">
+        Sol taraf
+    </div>
+    <div class="col-9">
+        @*         Burası Index sayfası olarak öğrencilerin listelendiği, listedeki öğrencilerin güncelleme/detay/silme işlemlerinin yapılacağı aynı zamanda bir ekleme butonunun olacağı sayfadır.
+        *@
+        <div class="d-flex justify-content-end">
+            <div class="p-2">
+                <a asp-controller="Student" asp-action="Create" class="btn btn-success" role="button">Yeni</a>
+                </div>
+            <div class="p-2">
+                <a asp-controller="Teacher" asp-action="Create" class="btn btn-info" role="button">Yeni Öğretmen</a>
+                </div>
+            <div class="p-2">
+                <a asp-controller="Lesson" asp-action="Create" class="btn btn-warning" role="button">Yeni Ders</a>
+                </div>
+        </div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Adı</th>
+                    <th scope="col">Soyadı</th>
+                    <th scope="col">Cinsiyeti</th>
+                    <th scope="col">Eposta</th>
+                    <th scope="col">Doğum Tarihi</th>
+                    <th scope="col">Durumu</th>
+                    <th scope="col">İşlemler</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">1</th>
+                    <td>Eyşan</td>
+                    <td>Tekinsoy</td>
+                    <td>Kadın</td>
+                    <td>eysantekinsoy@hotmail.com</td>
+                    <td>14/04/1997</td>
+                    <td>Aktif</td>
+                    <td>
+                        <a asp-controller="Student" asp-action="Details" asp-route-id="1"  class="btn btn-secondary" role="button">Detay</a>
+                        <a asp-controller="Student" asp-action="Edit" asp-route-id="1" class="btn btn-primary" role="button">Düzenle</a>
+                        <a asp-controller="Student" asp-action="Delete" asp-route-id="1"  class="btn btn-danger" role="button">Sil</a>
 
-<p>Student Index</p>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>İhsan</td>
+                    <td>Koç</td>
+                    <td>Erkek</td>
+                    <td>ihsankoc@hotmail.com</td>
+                    <td>22/09/1997</td>
+                    <td>Aktif</td>
+                    <td>
+                        <a asp-controller="Student" asp-action="Details" asp-route-id="2" class="btn btn-secondary" role="button">Detay</a>
+                        <a asp-controller="Student" asp-action="Edit" asp-route-id="2" class="btn btn-primary" role="button">Düzenle</a>
+                        <a asp-controller="Student" asp-action="Delete" asp-route-id="2" class="btn btn-danger" role="button">Sil</a>
 
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td>Hülya</td>
+                    <td>Tekinsoy</td>
+                    <td>Kadın</td>
+                    <td>hulyatekinsoy@hotmail.com</td>
+                    <td>22/05/1972</td>
+                    <td>Aktif</td>
+                    <td>
+                        <a asp-controller="Student" asp-action="Details" asp-route-id="3" class="btn btn-secondary" role="button">Detay</a>
+                        <a asp-controller="Student" asp-action="Edit" asp-route-id="3" class="btn btn-primary" role="button">Düzenle</a>
+                        <a asp-controller="Student" asp-action="Delete" asp-route-id="3" class="btn btn-danger" role="button">Sil</a>
 
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

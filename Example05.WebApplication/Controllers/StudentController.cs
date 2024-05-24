@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Example05.WebApplication.Models;
+using Example05.WebApplication.Services;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Example05.WebApplication.Controllers
@@ -6,27 +8,38 @@ namespace Example05.WebApplication.Controllers
     public class StudentController : Controller
     {
         private const string _pageTitle = "Student";
+        private MenuService _menuService;
+
+        public StudentController()
+        {
+            _menuService = new MenuService();
+        }
 
         // GET: StudentController
         public ActionResult Index()
         {
+            ViewBag.Menus = _menuService.GetMenus();
             ViewBag.Title = $"{_pageTitle} Index";
-            return View();
+            ViewData["baslik"] = "Öğrenciler";
+            //ViewData["Title"] = "ÖĞRENCİLER";
+
+            Student student= new Student();
+            return View(student);
         }
 
         // GET: StudentController/Details/5
         public ActionResult Details(int id)
         {
+            ViewBag.Menus = _menuService.GetMenus();
             ViewBag.Title = $"{_pageTitle} Index";
 
-            StudentController student=new Student()
-
-            return View(student);
+            return View();
         }
 
         // GET: StudentController/Create
         public ActionResult Create()
         {
+            ViewBag.Menus = _menuService.GetMenus();
             return View();
         }
 
@@ -41,6 +54,7 @@ namespace Example05.WebApplication.Controllers
             }
             catch
             {
+                ViewBag.Menus = _menuService.GetMenus();
                 return View();
             }
         }
@@ -48,6 +62,7 @@ namespace Example05.WebApplication.Controllers
         // GET: StudentController/Edit/5
         public ActionResult Edit(int id)
         {
+            ViewBag.Menus = _menuService.GetMenus();
             return View();
         }
 
@@ -62,6 +77,7 @@ namespace Example05.WebApplication.Controllers
             }
             catch
             {
+                ViewBag.Menus = _menuService.GetMenus();
                 return View();
             }
         }
@@ -69,6 +85,7 @@ namespace Example05.WebApplication.Controllers
         // GET: StudentController/Delete/5
         public ActionResult Delete(int id)
         {
+            ViewBag.Menus = _menuService.GetMenus();
             return View();
         }
 
@@ -83,6 +100,7 @@ namespace Example05.WebApplication.Controllers
             }
             catch
             {
+                ViewBag.Menus = _menuService.GetMenus();
                 return View();
             }
         }
