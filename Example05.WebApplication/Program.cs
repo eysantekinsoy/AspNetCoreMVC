@@ -13,4 +13,6 @@ app.UseStaticFiles();
 
 app.MapDefaultControllerRoute();
 
+//app.MapControllerRoute(name: "YeniRota", pattern: "{action=Index}/{controller=Home}/{id?}");
+
 app.Run();

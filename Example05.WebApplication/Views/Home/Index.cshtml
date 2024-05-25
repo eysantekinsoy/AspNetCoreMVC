@@ -1,3 +1,10 @@
 ﻿@model Student
 
-<p>Home Index</p>
+@{
+
+    string orginalLayout = Layout;
+    Layout = "_HomeLayout";
+    ViewBag.Title += "Home Index Page";
+}
+
+<p>Home Index - @(orginalLayout)</p>
