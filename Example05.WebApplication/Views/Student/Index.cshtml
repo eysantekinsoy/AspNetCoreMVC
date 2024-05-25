@@ -1,7 +1,22 @@
-﻿@{
+﻿@model List<Student>
+@{
     //ViewBag.Title = "Burada da öğrenciler";
     string title = ViewData["baslik"].ToString();
 }
+
+@if (ViewBag.CreateStatus == true)
+{
+    <div class="alert alert-success" role="alert">
+        @ViewBag.CreateMessage
+    </div>
+}
+else if (ViewBag.CreateStatus == false)
+{
+    <div class="alert alert-danger" role="alert">
+        @ViewBag.CreateMessage
+    </div>
+}
+
 <h1 class="m-3">@title.ToUpper()</h1>
 <div class="row mt-5">
     <div class="col-3">
@@ -35,51 +50,24 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Eyşan</td>
-                    <td>Tekinsoy</td>
-                    <td>Kadın</td>
-                    <td>eysantekinsoy@hotmail.com</td>
-                    <td>14/04/1997</td>
-                    <td>Aktif</td>
-                    <td>
-                        <a asp-controller="Student" asp-action="Details" asp-route-id="1"  class="btn btn-secondary" role="button">Detay</a>
-                        <a asp-controller="Student" asp-action="Edit" asp-route-id="1" class="btn btn-primary" role="button">Düzenle</a>
-                        <a asp-controller="Student" asp-action="Delete" asp-route-id="1"  class="btn btn-danger" role="button">Sil</a>
+                @foreach(Student student in Model)
+                {
 
-                    </td>
-                </tr>
                 <tr>
-                    <th scope="row">2</th>
-                    <td>İhsan</td>
-                    <td>Koç</td>
-                    <td>Erkek</td>
-                    <td>ihsankoc@hotmail.com</td>
-                    <td>22/09/1997</td>
-                    <td>Aktif</td>
+                    <th scope="row">@student.Id</th>
+                    <td>@student.Name</td>
+                        <td>@student.Surname</td>
+                    <td>@student.Gender</td>
+                    <td>@student.Email</td>
+                    <td>@student.BirthDate.ToString("dd/MM/yyyy")</td>
+                    <td>@student.StudentStatus</td>
                     <td>
-                        <a asp-controller="Student" asp-action="Details" asp-route-id="2" class="btn btn-secondary" role="button">Detay</a>
-                        <a asp-controller="Student" asp-action="Edit" asp-route-id="2" class="btn btn-primary" role="button">Düzenle</a>
-                        <a asp-controller="Student" asp-action="Delete" asp-route-id="2" class="btn btn-danger" role="button">Sil</a>
-
+                            <a asp-controller="Student" asp-action="Details" asp-route-id="@student.Id" class="btn btn-secondary" role="button">Detay</a>
+                            <a asp-controller="Student" asp-action="Edit" asp-route-id="@student.Id" class="btn btn-primary" role="button">Düzenle</a>
+                            <a asp-controller="Student" asp-action="Delete" asp-route-id="@student.Id" class="btn btn-danger" role="button">Sil</a>
                     </td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Hülya</td>
-                    <td>Tekinsoy</td>
-                    <td>Kadın</td>
-                    <td>hulyatekinsoy@hotmail.com</td>
-                    <td>22/05/1972</td>
-                    <td>Aktif</td>
-                    <td>
-                        <a asp-controller="Student" asp-action="Details" asp-route-id="3" class="btn btn-secondary" role="button">Detay</a>
-                        <a asp-controller="Student" asp-action="Edit" asp-route-id="3" class="btn btn-primary" role="button">Düzenle</a>
-                        <a asp-controller="Student" asp-action="Delete" asp-route-id="3" class="btn btn-danger" role="button">Sil</a>
-
-                    </td>
-                </tr>
+                </tr>                    
+                }
             </tbody>
         </table>
     </div>
