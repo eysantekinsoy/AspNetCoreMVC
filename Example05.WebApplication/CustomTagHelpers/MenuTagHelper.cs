@@ -106,5 +106,6 @@ namespace Example05.WebApplication.CustomTagHelpers
 
             output.Content.AppendHtml(divContainer);
         }
+
     }
 }

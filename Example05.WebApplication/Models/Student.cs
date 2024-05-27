@@ -7,14 +7,14 @@ namespace Example05.WebApplication.Models
     {
         public int Id { get; set; }
 
-        [Display(Name="Adı")]
+        [Display(Name = "Adı")]
         public string Name { get; set; }
 
         [Display(Name = "Soyadı")]
         public string Surname { get; set; }
 
         [EmailAddress]
-        [Display(Name = "Eposta Adresi ")]
+        [Display(Name = "E-Posta Adresi")]
         public string Email { get; set; }
 
         [DataType(DataType.Date)]
@@ -26,8 +26,8 @@ namespace Example05.WebApplication.Models
 
         [Display(Name = "Öğrenci Durumu")]
         public StudentStatus StudentStatus { get; set; }
-
     }
+
     public enum Gender
     {
         [Display(Name = "Kadın")]
@@ -35,6 +35,7 @@ namespace Example05.WebApplication.Models
         [Display(Name = "Erkek")]
         Female
     }
+
     public enum StudentStatus
     {
         [Display(Name = "Pasif")]
@@ -42,6 +43,6 @@ namespace Example05.WebApplication.Models
         [Display(Name = "Aktif")]
         Active,
         [Display(Name = "Dondurdu")]
-        Freeze
+        Frezee
     }
 }

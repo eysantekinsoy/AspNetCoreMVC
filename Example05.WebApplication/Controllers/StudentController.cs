@@ -8,34 +8,28 @@ namespace Example05.WebApplication.Controllers
     public class StudentController : Controller
     {
         private const string _pageTitle = "Student";
-        private MenuService _menuService;
-        //private StudentService _studentService;
-        public StudentController()
-        {
-            _menuService = new MenuService();
-            //_studentService=new StudentService();
-        }
 
         // GET: StudentController
         public ActionResult Index()
         {
-            ViewBag.Menus = _menuService.GetMenus();
             ViewBag.Title = $"{_pageTitle} Index";
-            ViewData["baslik"] = "Öğrenciler";
 
-            //ViewBag.KayitDeneme = ViewBag.Deneme?? "ViewBag.Deneme gelemedi..";
-            //ViewData["KayitEkBilgi"] = ViewData["EkBilgi"] ?? "ViewData.['EkBilgi'] gelemedi..";
+            ViewData["Baslik"] = "Öğrenciler";
+
+
+            //ViewBag.KayitDeneme = ViewBag.Deneme ?? "ViewBag.Deneme gelemedi...";
+            //ViewData["KayitEkBilgi"] = ViewData["EkBilgi"] ?? "ViewData['EkBilgi'] gelemedi...";
 
             //string tempData = "TempData['KayitDurumu'] henüz gönderilmedi";
 
-            //if (TempData["KayitDurumu"] != null)
+            //if(TempData["KayitDurumu"]  != null)
             //{
-            //    tempData = TempData["KayitDurumu"].ToString();
+            //    tempData = TempData["KayitDurumu"].ToString(); 
             //}
 
-            //ViewBag.KayitTempData=tempData;
+            //ViewBag.KayitTempData = tempData;
 
-            //ViewData["Title"] = "ÖĞRENCİLER";
+            //ViewData["Title"] = "Ben değiştim Hayat :)"; // Bu Title keyi ViewBag de ki property değiştirecektir. AMAN DİKKAT!!!
 
             List<Student> students = StudentService.Students();
 
@@ -46,38 +40,34 @@ namespace Example05.WebApplication.Controllers
                     if ((bool)TempData["CreateStatus"])
                     {
                         ViewBag.CreateStatus = true;
-
                     }
                     else
                     {
-
                         ViewBag.CreateStatus = false;
                     }
 
                     ViewBag.CreateMessage = TempData["CreateMessage"];
-
                 }
-
             }
+
+
             return View(students);
         }
 
         // GET: StudentController/Details/5
         public ActionResult Details(int id)
         {
-            ViewBag.Menus = _menuService.GetMenus();
             ViewBag.Title = $"{_pageTitle} Index";
-
             return View();
         }
 
         // GET: StudentController/Create
         public ActionResult Create()
         {
-            ViewBag.Menus = _menuService.GetMenus();
-            ViewData["baslik"] = "Yeni Öğrenci";
+            ViewData["Baslik"] = "Yeni Öğrenci";
 
             Student student = new Student();
+
             return View(student);
         }
 
@@ -90,15 +80,15 @@ namespace Example05.WebApplication.Controllers
         {
             try
             {
-                //ViewBag.Deneme = "view bag geldi mi";
-                //ViewData["EkBilgi"] = "view data geldi mi";
+                //ViewBag.Deneme = "view Bag geldin mi?";
+                //ViewData["EkBilgi"] = "View Data geldin mi?";
 
                 //TempData["KayitDurumu"] = "Kayıt başarılı oldu.";
 
-                //string name = collection["name"];
+                //string name = collection["Name"];
                 //string surname = collection["Surname"];
                 //string email = collection["Email"];
-                //string birthDate = collection["BirtDate"];
+                //string birthDate = collection["BirthDate"];
                 //string gender = collection["Gender"];
                 //string status = collection["StudentStatus"];
 
@@ -111,7 +101,7 @@ namespace Example05.WebApplication.Controllers
 
                 StudentService.AddStudent(student);
 
-                TempData["CreateStatus"] = true;
+                TempData["CreateStatus"] = false;
                 TempData["CreateMessage"] = $"{name} {surname} sistemimize başarıyla kayıt oldu.";
 
 
@@ -119,7 +109,6 @@ namespace Example05.WebApplication.Controllers
             }
             catch
             {
-                ViewBag.Menus = _menuService.GetMenus();
                 return View();
             }
         }
@@ -127,7 +116,6 @@ namespace Example05.WebApplication.Controllers
         // GET: StudentController/Edit/5
         public ActionResult Edit(int id)
         {
-            ViewBag.Menus = _menuService.GetMenus();
             return View();
         }
 
@@ -142,7 +130,6 @@ namespace Example05.WebApplication.Controllers
             }
             catch
             {
-                ViewBag.Menus = _menuService.GetMenus();
                 return View();
             }
         }
@@ -150,7 +137,6 @@ namespace Example05.WebApplication.Controllers
         // GET: StudentController/Delete/5
         public ActionResult Delete(int id)
         {
-            ViewBag.Menus = _menuService.GetMenus();
             return View();
         }
 
@@ -165,7 +151,6 @@ namespace Example05.WebApplication.Controllers
             }
             catch
             {
-                ViewBag.Menus = _menuService.GetMenus();
                 return View();
             }
         }

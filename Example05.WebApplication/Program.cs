@@ -1,18 +1,22 @@
 var builder = WebApplication.CreateBuilder(args);
 
-//Controllers ve viewa yapýsýný Service eklentisini dahil etme
+//Controllers ve Views Yapýsýný Service eklentisini dahil ediyoruz.
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
 
-//Https otomotik yönlendirmesi
+//Https otomatik yönlendirmesi 
 app.UseHttpsRedirection();
 
-//Css Js ve benzeri statik sayfalarý çaðýrabilmek için
+//CSS, JS vb statik sayfalar çaðrýla bilsindiye
 app.UseStaticFiles();
 
 app.MapDefaultControllerRoute();
 
-//app.MapControllerRoute(name: "YeniRota", pattern: "{action=Index}/{controller=Home}/{id?}");
+//app.MapControllerRoute(name: "yeniRota", pattern: "{action=Index}/{controller=Home}/{id?}");
+
+// News/Breaking/5?cat=Sport&subCat=Bundesliga
+
+// News/Breaking/Sport/Budesliga/5 => /Controller/Action/CatName/SubCatNem/id?
 
 app.Run();

@@ -1,35 +1,43 @@
-﻿using Example05.WebApplication.Services;
+﻿using Example05.WebApplication.Models;
+using Example05.WebApplication.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Example05.WebApplication.Controllers
 {
     public class TeacherController : Controller
     {
-        private MenuService _menuService;
-
-        public TeacherController()
-        {
-            _menuService = new MenuService();
-        }
         public IActionResult Index()
         {
-            ViewBag.Menus = _menuService.GetMenus();
             return View();
         }
 
+        //[HttpGet]
         public IActionResult Create()
         {
-            var request = HttpContext.Request;
-            var queryString = request.QueryString;
-            var query = request.Query;
-
-            if (request.Method == "POST") 
-            { 
-                var form = request.Form; 
-            }
-
-            ViewBag.Menus = _menuService.GetMenus();
             return View();
+        }
+
+        [HttpPost]
+        //public IActionResult Create(string name, string surname, string email)
+        //public IActionResult Create(IFormCollection form)
+        //public IActionResult Create([Bind("Name","BirthDate")]TeacherViewModel model)
+        public IActionResult Create([Bind("Name", "BirthDate")] Teacher model)
+        {
+            model.BirthDate = new DateOnly(1997, 04, 14);
+            model.Name += " Eysan";
+            //var request = HttpContext.Request;
+            //var queryString = request.QueryString;
+            //var query = request.Query;
+
+            //if (request.Method == "POST")
+            //{
+            //    var form = request.Form;
+
+            //    string name = form["Name"];
+            //    string surname = form["Surname"];
+            //}
+
+            return View(model);
         }
     }
 }

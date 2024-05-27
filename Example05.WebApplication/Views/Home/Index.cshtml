@@ -1,10 +1,20 @@
-﻿@model Student
-
-@{
-
-    string orginalLayout = Layout;
-    Layout = "_HomeLayout";
+﻿﻿@{
+    // string orginalLayout = Layout;
+    // Layout = "_HomeLayout";
     ViewBag.Title += "Home Index Page";
 }
 
-<p>Home Index - @(orginalLayout)</p>
+@* <p>Home Index - @(orginalLayout)</p> *@
+<p id="content">Home Index</p>
+
+
+@section Scripts {
+
+    <script type="text/javascript">
+
+        $(document).ready(() => {
+            $("#content").css("color", "red");
+        })
+
+    </script>
+}
