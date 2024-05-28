@@ -1,10 +1,8 @@
 ﻿@model List<Otel>
 
 
-<a asp-controller="Hotel" asp-action="Create">Ekle</a>
-<a asp-controller="Hotel" asp-action="Details" asp-route-id="5">Detay</a>
-<a asp-controller="Hotel" asp-action="Edit" asp-route-id="15">Düzenle</a>
-<a asp-controller="Hotel" asp-action="Delete" asp-route-id="25">Sil</a>
+<a asp-controller="Hotel" asp-action="Create" class="btn btn-success">Ekle</a>
+
 
 <table class="table">
     <thead>
@@ -13,6 +11,7 @@
             <th scope ="col">Adı</th>
             <th scope="col">Açıklama</th>
             <th scope="col">Telefon</th>
+            <th scope="col">İşlemler</th>
         </tr>
     </thead>
     <tbody>
@@ -23,6 +22,11 @@
                 <td>@otel.Name</td>
                 <td>@otel.Description</td>
                 <td>@otel.Phone</td>
+                <td>
+                    <a asp-controller="Hotel" asp-action="Details" asp-route-id="@otel.Id" class="btn btn-primary">Detay</a>
+                    <a asp-controller="Hotel" asp-action="Edit" asp-route-id="@otel.Id" class="btn btn-warning">Düzenle</a>
+                    <a asp-controller="Hotel" asp-action="Delete" asp-route-id="@otel.Id" class="btn btn-danger">Sil</a>
+                </td>
             </tr>
         }
     </tbody>
@@ -32,6 +36,7 @@
             <th scope="col">Adı</th>
             <th scope="col">Açıklama</th>
             <th scope="col">Telefon</th>
+            <th scope="col">İşlemler</th>
         </tr>
     </tfood>
 </table>
