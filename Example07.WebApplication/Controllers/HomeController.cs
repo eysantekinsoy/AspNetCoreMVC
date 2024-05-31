@@ -108,6 +108,11 @@ namespace Example07.WebApplication.Controllers
             return StatusCode(id);
         }
 
+        public PartialViewResult SubMenu()
+        {
+            return PartialView("_SubMenu");
+        }
+
 
         public IActionResult Privacy()
         {
